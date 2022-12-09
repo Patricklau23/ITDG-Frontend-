@@ -1,0 +1,57 @@
+
+<div class="container">
+    <div class="row">
+      <form [formGroup]="editSurveyForm">
+        <div class="form-group">        
+          <label for="topic">Topic</label>
+          <input
+            type="text"
+            id="topic"
+            formControlName="topic"
+            class="form-control"
+            placeholder="Your Survey Topic"
+          >
+        </div>
+  
+        <div class="form-group">
+          <label for="description">Description</label>
+          <input
+            type="text"
+            id="description"
+            class="form-control"
+            formControlName="description"
+            placeholder="Description of your survey"
+          >
+        </div>
+  
+        <div formArrayName="questions">
+          <div  
+            class="form-group"
+            *ngFor="let question of originalQuestions; let i = index"
+          >
+          <h6>Q{{i+1}}</h6>
+            <input type="text" [value]='originalQuestions[i]' class="form-control" [formControlName]="i">
+            
+
+          </div>
+        </div>
+        <button class="btn btn-primary" (click)="onSubmit()">UPDATE</button>
+        <button class="btn btn-danger" (click)="onCancel()">CANCEL</button>
+    </form>
+    </div>
+  </div>
+
+
+
+
+  <!-- <div formArrayName="questions">
+    <div  
+      class="form-group"
+      *ngFor="let question of originalQuestions; let i = index"
+    >
+    <h6>Q{{i+1}}</h6>
+      <input type="text" [value]='originalQuestions[i]' class="form-control" [formControlName]="i">
+      
+
+    </div>
+  </div> -->
